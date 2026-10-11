@@ -1,4 +1,5 @@
 # 📖 SmartRead
+**Live demo:** [https://jananil683-byte.github.io/SmartRead/](https://jananil683-byte.github.io/SmartRead/)
 
 **Read • Understand • Learn**
 
