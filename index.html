@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0b76e8">
+  <title>SmartRead – Read • Understand • Learn</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf_viewer.min.css">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- PDF.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-icon">📖</div>
+      <div>
+        <h1>SmartRead</h1>
+        <p>Read • Understand • Learn</p>
+      </div>
+    </div>
+    <button class="nav-vocab" onclick="showVocabulary()">📚 My Vocabulary</button>
+  </header>
+
+  <main>
+    <section id="home" class="hero card">
+      <div class="hero-copy">
+        <span class="badge">📚 Interactive Reading Assistant</span>
+        <h2>Read smarter.<br><span>Understand every word.</span></h2>
+        <p>Upload a PDF or e-book, select an unfamiliar word, and instantly get its meaning, Tamil translation and pronunciation.</p>
+
+        <div class="actions">
+          <label class="primary-btn" for="pdfFile">📄 Select PDF</label>
+          <input id="pdfFile" type="file" accept="application/pdf" hidden>
+          <button class="secondary-btn" onclick="startReading()">▶ Start Reading</button>
+        </div>
+        <small id="fileName">No PDF selected</small>
+      </div>
+      <div class="hero-art">
+        <div class="book">📖</div>
+        <div class="spark s1">✦</div>
+        <div class="spark s2">✧</div>
+        <div class="bubble">Learn while you read!</div>
+      </div>
+    </section>
+
+    <section id="readerSection" class="reader-section hidden">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">READING MODE</span>
+          <h2 id="documentTitle">Your document</h2>
+        </div>
+        <button class="ghost-btn" onclick="backHome()">← Home</button>
+      </div>
+      <div id="readerHint" class="hint">💡 Double-click (or double-tap) a word to look it up.</div>
+      <div id="pdfViewer" class="pdf-viewer"></div>
+    </section>
+
+    <section id="vocabularySection" class="vocabulary-section hidden">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">YOUR LEARNING</span>
+          <h2>📚 My Vocabulary</h2>
+        </div>
+        <button class="ghost-btn" onclick="backHome()">← Home</button>
+      </div>
+      <div class="vocab-summary">
+        <strong id="wordCount">0</strong>
+        <span>saved words</span>
+      </div>
+      <div id="savedWordsList" class="saved-list"></div>
+    </section>
+  </main>
+
+  <!-- Meaning bottom sheet -->
+  <div id="meaningOverlay" class="overlay hidden" onclick="closeMeaning(event)">
+    <div class="meaning-sheet" onclick="event.stopPropagation()">
+      <button class="close-btn" onclick="hideMeaning()">×</button>
+      <div class="word-heading">
+        <span class="mini-label">SELECTED WORD</span>
+        <h2 id="selectedWord">Adaptability</h2>
+      </div>
+
+      <div class="meaning-card english">
+        <div class="meaning-title">🔊 English Meaning</div>
+        <p id="englishMeaning">Finding meaning...</p>
+      </div>
+
+      <div class="meaning-card tamil">
+        <div class="meaning-title">தமிழ் Tamil Meaning</div>
+        <p id="tamilMeaning">தமிழ் அர்த்தம் தேடப்படுகிறது...</p>
+      </div>
+
+      <div class="sheet-actions">
+        <button class="primary-btn compact" onclick="speakWord()">🔊 Pronounce</button>
+        <button id="saveBtn" class="save-btn" onclick="saveCurrentWord()">★ Save Word</button>
+      </div>
+      <button class="full-close" onclick="hideMeaning()">Close</button>
+    </div>
+  </div>
+
+  <footer>
+    <span>📄 PDF Upload & Read</span>
+    <span>👆 Word Selection</span>
+    <span>📖 Dictionary API</span>
+    <span>தமிழ் Translation</span>
+    <span>🔊 Pronunciation</span>
+    <span>⭐ Save & Learn</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
